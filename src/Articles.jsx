@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import './articles.css'
 
 const Article = () => {
     const [articles, setArticles] = useState([]);
@@ -20,6 +21,7 @@ const Article = () => {
                     <div className='card-main'>
                     <h2>{article.title}</h2>
                     <p>{article.author}</p>
+                    <p></p>
                     <p>Topic: {article.topic}</p>
                 </div>
 
