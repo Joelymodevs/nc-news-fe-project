@@ -1,18 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './articles.css'
+import { getArticles } from './utils/getAllArticles';
 
 const Article = () => {
     const [articles, setArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
 
     useEffect(() => {
-        axios.get('https://nc-news-n3aj.onrender.com/api/articles').then((result) => {
-        setArticles(result.data)
+        getArticles().then((data) => {
+            setArticles(data);
+            setIsLoading(false)
         }).catch((err) => {
             console.log(err)
+            setIsLoading(false)
         })
     }, [])
+
+    if (isLoading) {
+        return (
+            <div>
+                <p>Loading...</p>
+            </div>
+        )
+    }
     return (
         <div className='articles'>
             {articles.map(article => (
