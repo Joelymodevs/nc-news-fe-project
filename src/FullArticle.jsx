@@ -3,6 +3,7 @@ import { getArticles } from "./utils/getAllArticles";
 import { getArticleById } from "./utils/getArticleById";
 import { useParams } from "react-router-dom";
 import './ArticlePage.css'
+import Comments from './comments'
 
 const FullArticle = () => {
     const [article, setArticle] = useState(null)
@@ -33,6 +34,7 @@ const FullArticle = () => {
             <p className="author">Author: {article.author}</p>
             <img src={article.article_img_url} alt={article.title} className="article-img" />
             <p className="body">{article.body}</p>
+            <Comments id={article.article_id} />
         </div>
     )
 }
