@@ -33,7 +33,7 @@ const Article = () => {
         <div key={article.article_id} className="article-card">
           <img
             src={article.article_img_url}
-            alt="article-image"
+            alt={article.title}
             className="card-img"
           />
           <div className="card-main">

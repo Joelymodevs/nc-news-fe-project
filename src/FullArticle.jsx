@@ -16,7 +16,7 @@ const FullArticle = () => {
         }).catch((err) => {
             console.log(err)
         })
-    }, [article_id])
+    }, [article_id], setIsLoading(true))
 
     if (isLoading || !article) {
         return (
