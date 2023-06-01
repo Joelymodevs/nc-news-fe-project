@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getArticles } from "./utils/getAllArticles";
-import { Link } from 'react-router-dom'
-import "./articles.css";
+import { Link } from "react-router-dom";
+import "./styles/articles.css";
 
 const Article = () => {
   const [articles, setArticles] = useState([]);
@@ -20,32 +20,28 @@ const Article = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
+    return <p>Loading...</p>;
   }
   return (
-    <div className="articles">
+    <articles>
       {articles.map((article) => (
         <Link to={`/articles/${article.article_id}`} key={article.title}>
-        <div key={article.article_id} className="article-card">
-          <img
-            src={article.article_img_url}
-            alt="article-image"
-            className="card-img"
-          />
-          <div className="card-main">
-            <h2>{article.title}</h2>
-            <p>{article.author}</p>
-            <p></p>
-            <p>Topic: {article.topic}</p>
+          <div key={article.article_id} className="article-card">
+            <img
+              src={article.article_img_url}
+              alt="article-image"
+              className="card-img"
+            />
+            <div className="card-main">
+              <h2>{article.title}</h2>
+              <p>{article.author}</p>
+              <p></p>
+              <p>Topic: {article.topic}</p>
+            </div>
           </div>
-        </div>
         </Link>
       ))}
-    </div>
+    </articles>
   );
 };
 
