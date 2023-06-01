@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const getArticles = () => {
+
   return axios
     .get("https://nc-news-n3aj.onrender.com/api/articles")
     .then((res) => {
@@ -10,3 +11,5 @@ export const getArticles = () => {
       console.log(err);
     });
 };
+
+
