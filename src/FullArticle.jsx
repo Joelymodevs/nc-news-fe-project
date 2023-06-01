@@ -6,17 +6,19 @@ import './ArticlePage.css'
 
 const FullArticle = () => {
     const [article, setArticle] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const { article_id } = useParams()
 
     useEffect(() => {
+        setIsLoading(true)
         getArticleById(article_id).then((data) => {
             setArticle(data);
             setIsLoading(false)
         }).catch((err) => {
             console.log(err)
+            setIsLoading(false)
         })
-    }, [article_id], setIsLoading(true))
+    }, [article_id])
 
     if (isLoading || !article) {
         return (
