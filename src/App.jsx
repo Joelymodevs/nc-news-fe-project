@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import './App.css'
+import './styles/App.css'
 import Article from './Articles';
 import FullArticle from './FullArticle';
 

@@ -16,9 +16,11 @@ const Comments = ({id}) => {
     }, [id])
     if (isLoading) {
         return (
-            <div>
                 <p>Comments Loading...</p>
-            </div>
+        )
+    } else if (!comments) {
+        return (
+            <p>No Comments To Be Found Here Amigo!</p>
         )
     }
 

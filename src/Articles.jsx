@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getArticles } from "./utils/getAllArticles";
 import { Link } from 'react-router-dom'
-import "./articles.css";
+import "./styles/articles.css";
 
 const Article = () => {
   const [articles, setArticles] = useState([]);
@@ -21,13 +21,11 @@ const Article = () => {
 
   if (isLoading) {
     return (
-      <div>
         <p>Loading...</p>
-      </div>
     );
   }
   return (
-    <div className="articles">
+    <articles>
       {articles.map((article) => (
         <Link to={`/articles/${article.article_id}`} key={article.title}>
         <div key={article.article_id} className="article-card">
@@ -45,7 +43,7 @@ const Article = () => {
         </div>
         </Link>
       ))}
-    </div>
+    </articles>
   );
 };
 
