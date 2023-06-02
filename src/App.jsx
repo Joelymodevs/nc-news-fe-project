@@ -7,7 +7,7 @@ import FullArticle from "./FullArticle";
 function App() {
   return (
     <>
-      <div className="header">NC News</div>
+      <header>NC News1</header>
       <BrowserRouter>
         <Link to="/articles">
           <button>Articles</button>
