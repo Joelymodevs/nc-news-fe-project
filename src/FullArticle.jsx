@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getArticles } from "./utils/utils";
 import { getArticleById } from "./utils/utils";
 import { useParams } from "react-router-dom";
-import './ArticlePage.css'
+import './styles/ArticlePage.css'
 import Comments from './comments'
 
 const FullArticle = () => {
