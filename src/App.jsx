@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import './App.css'
 import Article from './Articles';
 
+import FullArticle from './FullArticle';
+
+
+
 function App() {
   
 
@@ -15,6 +19,10 @@ function App() {
     </Link>
     <Routes>
       <Route path="/articles" element={<Article/>}/>
+
+      <Route path="/articles/:article_id" element={<FullArticle/>}/>
+
+
     </Routes>
     </BrowserRouter>
     </>
