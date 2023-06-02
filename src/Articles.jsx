@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getArticles } from "./utils/getAllArticles";
+import { getArticles } from "./utils/utils";
 import { Link } from "react-router-dom";
 import "./styles/articles.css";
 

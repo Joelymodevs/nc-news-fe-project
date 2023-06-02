@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getArticles } from "./utils/getAllArticles";
-import { getArticleById } from "./utils/getArticleById";
+import { getArticles } from "./utils/utils";
+import { getArticleById } from "./utils/utils";
 import { useParams } from "react-router-dom";
 import "./styles/ArticlePage.css";
 import Comments from "./comments";
