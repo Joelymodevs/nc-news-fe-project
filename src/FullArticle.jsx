@@ -6,7 +6,6 @@ import './styles/ArticlePage.css'
 import Comments from './comments'
 
 const FullArticle = () => {
-
     const [article, setArticle] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { article_id } = useParams()
