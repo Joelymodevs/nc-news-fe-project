@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import "./styles/App.css";
 import Article from "./Articles";
 import FullArticle from "./FullArticle";
 
+
+
+
 function App() {
   return (
     <>
-      <header>NC News1</header>
+      <header><p>NC News 🏳️‍🌈</p></header>
       <BrowserRouter>
         <Link to="/articles">
           <button>Articles</button>
@@ -17,6 +21,7 @@ function App() {
           <Route path="/articles/:article_id" element={<FullArticle />} />
         </Routes>
       </BrowserRouter>
+
     </>
   );
 }

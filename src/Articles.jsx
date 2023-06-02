@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { getArticles } from "./utils/utils";
 import { Link } from "react-router-dom";
@@ -22,6 +23,7 @@ const Article = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
+
   return (
     <articles>
       {articles.map((article) => (
