@@ -6,16 +6,19 @@ import './styles/ArticlePage.css'
 import Comments from './comments'
 
 const FullArticle = () => {
+
     const [article, setArticle] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { article_id } = useParams()
 
     useEffect(() => {
+        setIsLoading(true)
         getArticleById(article_id).then((data) => {
             setArticle(data);
             setIsLoading(false)
         }).catch((err) => {
             console.log(err)
+            setIsLoading(false)
         })
     }, [article_id])
 
