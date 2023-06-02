@@ -32,13 +32,14 @@ export const getArticles = () => {
     });
 };
 
-export const postComment = (id, body, username) => {
+export const postComment = (id, body, author) => {
   return axios
     .post(`https://nc-news-n3aj.onrender.com/api/articles/${id}/comments`, {
-      username,
+      author,
       body,
     })
     .then((response) => {
+      console.log(response)
         return response.data
     }).catch((err) => {
         console.log(err)

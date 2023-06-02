@@ -5,7 +5,7 @@ const AddComment = ({ id, postComment }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    AddComment(id, body);
+    postComment(body, id);
     setBody("");
   };
   return (

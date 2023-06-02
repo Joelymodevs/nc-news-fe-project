@@ -7,7 +7,7 @@ const Comments = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPosting, setIsPosting] = useState(false)
 
-  useEffect(() => {
+  const fetchComments = () => {
     getCommentsById(id)
       .then((data) => {
         setComments(data);
@@ -17,19 +17,25 @@ const Comments = ({ id }) => {
         console.log(err);
         setIsLoading(false);
       });
-  }, [id]);
-
-  const handleComment = (body) => {
-    setIsPosting(true)
-    const username = 'grumpy19'
-    postComment(id, body, username).then((newCom) => {
-        setComments((newComment) => [newComment, ...comments]);
-        setIsPosting(false);
-    }).catch((err) => {
-        console.log(err)
-        setIsPosting(false)
-    })
+  
   }
+  
+    const handleComment = (body) => {
+      setIsPosting(true)
+      const author = 'grumpy19'
+      postComment(id, body, author).then((newCom) => {
+          setComments((currentComments) => [newCom, ...currentComments]);
+          setIsPosting(false);
+          fetchComments()
+      }).catch((err) => {
+          console.log(err)
+          setIsPosting(false)
+      })
+    }
+    useEffect(() => {
+      fetchComments()
+    }, [id])
+  
   if (isLoading) {
     return <p>Comments Loading...</p>;
   }
@@ -41,7 +47,8 @@ const Comments = ({ id }) => {
   return (
     <div>
       <h2>Comments!</h2>
-
+      {isPosting ? <p>Posting...</p> : null}
+      <AddComment id={id} postComment={handleComment}/>
       {comments.map((comment) => (
         <div key={comment.comment_id}>
           <p>
@@ -50,7 +57,7 @@ const Comments = ({ id }) => {
           <p>{comment.body}</p>
         </div>
       ))}
-      <AddComment postComment={handleComment}/>
+      
     </div>
   );
 };
