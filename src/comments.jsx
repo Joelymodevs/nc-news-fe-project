@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCommentsById } from "./utils/getCommentsById";
+import { getCommentsById } from "./utils/utils";
 
 const Comments = ({ id }) => {
   const [comments, setComments] = useState([]);

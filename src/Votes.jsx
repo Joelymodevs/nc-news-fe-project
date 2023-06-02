@@ -2,25 +2,27 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Vote = ({ article }) => {
-    const currVotes = article.votes
-  const [votes, setVotes] = useState(currVotes);
+  const [votes, setVotes] = useState(article.votes);
   const [isVoted, setIsVoted] = useState(false);
+  const [error, setError] = useState(null)
+  
 
   const handleUpVote = () => {
     if (isVoted) {
       return;
     }
+    setVotes(votes + 1)
+
     const id = article.article_id
     axios
       .patch(`https://nc-news-n3aj.onrender.com/api/articles/${id}`, {
         "inc_votes": 1
       })
       .then((response) => {
-        console.log(response.data)
-        setVotes(votes + 1 );
         setIsVoted(true)
       }).catch((err) => {
         console.log(err)
+        setError(err.message)
       })
   };
 
@@ -28,18 +30,17 @@ const Vote = ({ article }) => {
     if (isVoted) {
         return;
     }
-
+    setVotes(votes - 1)
     const id = article.article_id;
     axios
       .patch(`https://nc-news-n3aj.onrender.com/api/articles/${id}`, {
         "inc_votes": -1
       })
       .then((response) => {
-        console.log(response.data)
-        setVotes(votes - 1 );
         setIsVoted(true)
       }).catch((err) => {
         console.log(err)
+        setError(err.message)
       })
     
   }
@@ -49,6 +50,7 @@ const Vote = ({ article }) => {
         <p>likes: {votes}</p>
           <button onClick={handleUpVote}>Upvote this article</button>
           <button onClick={handleDownVote}>Downvote this article</button>
+          {error && <p>{error}</p>}
           
       </div>
   )
